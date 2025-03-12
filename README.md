@@ -24,28 +24,28 @@
 
 #### **Responses:**
 **If the report is still being generated:**  
-\`\`\`json
+`
 {
     "report_id": "123e4567-e89b-12d3-a456-426614174000",
     "status": "Started"
 }
-\`\`\`
+`
 
 **If the report has been successfully generated:**  
-\`\`\`json
+`
 {
     "report_id": "123e4567-e89b-12d3-a456-426614174000",
     "status": "Completed"
 }
-\`\`\`
+`
 
 **If the report ID is invalid or not found:**  
-\`\`\`json
+`
 {
     "report_id": "invalid-report-id",
     "status": "Not Found"
 }
-\`\`\`
+`
 
 
 
@@ -66,7 +66,7 @@
 - The **calculated data is stored in a CSV file**.  
 - When `/get_report/` is used, it checks if the report is `"Started"` or `"Completed"`.  
 
-**🔹 Optimization Suggestion:**  
+** Optimization Suggestion:**  
 To improve efficiency, convert poll data **to UTC before storing it in the database** to avoid recalculations during report generation.
 
 ## Future Improvements
