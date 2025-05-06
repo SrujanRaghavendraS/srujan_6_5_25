@@ -22,14 +22,13 @@ def trigger_report(background_tasks: BackgroundTasks):
 def generate_report(report_id):
     global start_counter,completed_counter
     print('report started')
-    DB_URL = "postgresql://postgres:password@localhost:5432/loop"
+    DB_URL = "postgresql://postgres:password@localhost:5432/store_data"
     present_time = datetime.strptime("2024-08-10 22:35:00", "%Y-%m-%d %H:%M:%S")
     
     conn = psycopg2.connect(DB_URL)
     cursor = conn.cursor()
     cursor.execute("SELECT store_id FROM store_timezones")
     store_ids = [row[0] for row in cursor.fetchall()]
-    print("Store id",store_ids)
     cursor.close()
     conn.close()
     
@@ -49,7 +48,7 @@ def generate_report(report_id):
     report_status[report_id] = "Completed"
 
 def process_stores(store_ids, writer, present_time):
-    DB_URL = "postgresql://postgres:password@localhost:5432/loop"
+    DB_URL = "postgresql://postgres:password@localhost:5432/store_data"
     conn = psycopg2.connect(DB_URL)
     cursor = conn.cursor()
     
